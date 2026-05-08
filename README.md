@@ -31,7 +31,7 @@ The model workflow:
 5. Initialize model using `rangr` 
 6. Simulate range shifts over time
  7. Plot results
-Notes
+Notes-
 •	Missing values (NA) are treated as unsampled rather than unoccupied, preserving the biological integrity of the abundance surface and avoiding bias in dispersal kernel fitting and threshold detection.
 •	Raster aggregation is applied for computational efficiency
 **If you use this workflow, please cite**:
