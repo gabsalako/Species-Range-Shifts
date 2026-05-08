@@ -15,6 +15,6 @@ The model workflow:
 6. Simulate range shifts over time
  7. Plot results
 Notes
-•	Missing values (NA) are currently set to zero
+•	Missing values (NA) are removed before model simulation 
 •	Raster aggregation is applied for computational efficiency
 
