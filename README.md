@@ -1,4 +1,5 @@
 # Range Shifts Model Simulation (Rangemodel)
+This repository provides a reproducible R workflow for simulating spatially explicit, mechanistic range shifts of earthworm community abundance under future climate change along Elbe flood plain region, Germany. Using the rangr package, the simulation models dispersal, reproduction, and survival dynamics — going beyond correlative SDM envelope projection — driven by temperature change under CHELSA CMIP6 CNRM-CM6-1 SSP5-8.5 across three time steps: current · 2050 · 2070. Community abundance is empirically parameterised from the UBA BoBiKa national-scale soil biodiversity survey (FKZ 3719-71-206-0), Germany.
 ## 🧪 Requirements Install required packages: ```r install.packages(c("terra", "rangr", "here"))
 This repository contains an R-based workflow for simulating species range shifts using raster data and the `rangr` package.
 ## 📁 Project Structure
