@@ -27,7 +27,7 @@ StackClimatex_clean <- mask(StackClimatex, master_mask)
 #initialise
 sim_dataSF <- initialise(
   n1_map =Abundance_clean ,#represents NLmap
-  K_map =StackClimatex_clean, # represents Kmap Lu can be 2006 or 2019 or climate scenarios
+  K_map =StackClimatex_clean, # represents Kmap or climate layers for current, 2050 and 2070
   r = log(2),
   rate = 1 / 1e3
 )
@@ -36,11 +36,11 @@ Abundance_agg <- aggregate(Abundance_clean, fact = 4)
 StackClimatex_agg <- aggregate(StackClimatex_clean, fact = 4)
 sim_dataSF1 <- initialise(
   n1_map =Abundance_agg ,#represents NLmap
-  K_map =StackClimatex_agg, # represents Kmap Lu can be 2006 or 2019 or climate scenarios
+  K_map =StackClimatex_agg, # represents Kmap or climate layers for current, 2050 and 2070
   r = log(2),
   rate = 1 / 1e3
 )
-#Check the summary of initialization
+#Check the summary of initialization for sim_dataSF
 summary(sim_dataSF) 
 #set the time steps at 3, current, 2050 and 20270
 sim_result_SF <- sim(obj = sim_dataSF, time = 3)
