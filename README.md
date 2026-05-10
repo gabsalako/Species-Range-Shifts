@@ -17,7 +17,7 @@ Repository Structure
 •	│   ├── Rscripts/
 •	│   │   └── rangr_simulation.R     # Main simulation script
 •	│   ├── Output/
-•	│   │   └── [simulation figures]   # Range shift maps and abundance trajectory plot
+•	│   │   └── [simulation figures]   # Range shift maps and abundance trajectory- 2 plots (1) policy informed threshold with clean background (2) raw outputs
 •	│   └── Rangemodel.Rproj           # RStudio project file
 •	│
 •	├── README.md                      # This file
