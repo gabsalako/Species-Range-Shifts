@@ -22,7 +22,6 @@ Repository Structure
 •	│
 •	├── README.md                      # This file
 •	└── CITATION.cff                   # Formal citation metadata
-•	________________________________________
 
 Variable selection rationale: Temperature variable (MAT) was selected as primary carrying capacity drivers based on expected rise in future global temperature and variable importance analysis from the national-scale SDM (Salako et al. 2024, Biodiversity and Conservation), where temperature was confirmed as one of the principal dominant predictors of earthworm density (abundance) distribution across Germany (Salako et al 2024). These results are consistent with global-scale variable importance analysis from the revised global earthworm occurrence database (Salako et al. in prep.).
 *Full Workflow
