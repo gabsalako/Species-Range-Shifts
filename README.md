@@ -23,15 +23,16 @@ Repository Structure
 •	├── README.md                      # This file
 •	└── CITATION.cff                   # Formal citation metadata
 •	________________________________________
+
 Variable selection rationale: Temperature variable (MAT) was selected as primary carrying capacity drivers based on expected rise in future global temperature and variable importance analysis from the national-scale SDM (Salako et al. 2024, Biodiversity and Conservation), where temperature was confirmed as one of the principal dominant predictors of earthworm density (abundance) distribution across Germany (Salako et al 2024). These results are consistent with global-scale variable importance analysis from the revised global earthworm occurrence database (Salako et al. in prep.).
-The model workflow: 
-1. Load raster data using `terra` 
-2. Prepare and combine climate layers 
-3. Handle missing values 
-4. Aggregate raster resolution 
-5. Initialize model using `rangr` 
-6. Simulate range shifts over time
- 7. Plot results
+*Full Workflow
+Step 1 — Load raster data using terra::rast(): empirical abundance raster and three temperature rasters.
+Step 2 — Prepare and combine climate layers into a multi-layer temporal raster stack.
+Step 3 — Handle missing values. NA cells are removed prior to model initialisation. Only cells with verified abundance records contribute to the simulation. Raster extents and CRS are aligned across all input layers.
+Step 4 — Aggregate raster resolution using terra::aggregate() for computational efficiency.
+Step 5 — Initialise rangr model using initialise(): initial abundance from BoBiKa raster; carrying capacity linked to temperature; dispersal kernel parameterised from earthworm dispersal literature.
+Step 6 — Simulate range shifts using sim() across 2050 and 2070 climate layers, propagating dispersal, reproduction, and survival dynamics.
+Step 7— Plot results
 Notes-
 •	Missing values (NA) are treated as unsampled rather than unoccupied, preserving the biological integrity of the abundance surface and avoiding bias in dispersal kernel fitting and threshold detection.
 •	Raster aggregation is applied for computational efficiency
