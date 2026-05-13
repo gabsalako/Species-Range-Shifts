@@ -42,10 +42,10 @@ install.packages(c("terra", "rangr", "here"))
 ## Scientific Background
 Earthworms mediate approximately 80% of soil organic matter decomposition and are primary indicators of soil ecosystem health. Their distributions are highly sensitive to temperature and precipitation — yet mechanistic projections of how earthworm community abundance will shift under future climate change remain scarce.
 Existing models largely rely on correlative SDMs, which project habitat suitability envelopes but do not explicitly model dispersal, demography, or population dynamics. This repository addresses that gap using the `rangr` package, which implements spatially explicit population simulation — modelling the process of range shift rather than just the destination.
-The simulation is directly connected to published national-scale earthworm distribution models from the BoBiKa programme (Salako et al. 2023, 2024), ensuring empirically grounded parameterisation.
+The simulation is directly connected to published national-scale earthworm distribution models from the BoBiKa and BONARES programmes (Salako et al. 2023, 2024), ensuring empirically grounded parameterisation.
 
 **Scientific question:** How will earthworm community abundance shift spatially under SSP5-8.5, accounting for dispersal limitation and population dynamics — and at what point does mean abundance approach critical policy-relevant thresholds?
-**Variable selection rationale:** MAT and PPT were selected as primary carrying capacity drivers based on variable importance analysis from the BoBiKa ensemble SDM (Salako et al. 2023), where temperature of the coldest month (Bio_6) and annual precipitation (Bio_12) were confirmed as dominant predictors. These results are consistent with global-scale variable importance analysis from the revised global earthworm occurrence database (Salako et al. in prep.).
+**Variable selection rationale:** MAT and PPT were selected as primary carrying capacity drivers based on variable importance analysis from the BoBiKa ensemble SDM (Salako et al. 2023), where soil variables (tecture), avg. temperature (Bio_1) and annual precipitation (Bio_12) were confirmed as major predictors. These results are consistent with global-scale variable importance analysis from the revised global earthworm occurrence database (Salako et al. in prep.).
 
 ---
 ## Full Workflow
