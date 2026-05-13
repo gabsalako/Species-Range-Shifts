@@ -52,11 +52,11 @@ The simulation is directly connected to published national-scale earthworm distr
 
 **Step 1 — Load raster data** using `terra::rast()`: empirical abundance raster and three temperature rasters.
 **Step 2 — Prepare and combine climate layers** into a multi-layer temporal raster stack.
-**Step 3 — Handle missing values.** NA cells are removed using `na.omit()` prior to model initialisation. Only cells with verified abundance records contribute to the simulation. Raster extents and CRS are aligned across all input layers.
-**Step 4 — Aggregate raster resolution** using `terra::aggregate()` for computational efficiency.
+**Step 3 — Handle missing values.** NA cells are removed using prior to model initialisation. Only cells with verified abundance records contribute to the simulation. Raster extents and CRS are aligned across all input layers.
+**Step 4 — Aggregate raster resolution** using `terra::aggregate()` for computational efficiency. This is optional
 **Step 5 — Initialise rangr model** using `initialise()`: initial abundance from BoBiKa raster; carrying capacity linked to temperature; dispersal kernel parameterised from earthworm dispersal literature.
 **Step 6 — Simulate range shifts** using `sim()` across 2050 and 2070 climate layers, propagating dispersal, reproduction, and survival dynamics.
-**Step 7 — Plot and export results:** three spatial abundance maps (t₁, t₂, t₃) and mean abundance trajectory plot with policy threshold line. (plots are in the outputs foler)
+**Step 7 — Plot and export results:** three spatial abundance maps at current-2020, 2050 and 2070  (t₁, t₂, t₃) and mean abundance trajectory plot with policy threshold line. (plots are in the outputs folder)
 
 | Limitation | Planned extension |
 |---|---|
