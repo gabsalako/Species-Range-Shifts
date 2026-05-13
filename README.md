@@ -14,7 +14,7 @@
 | Time steps | Current · 2050 · 2070 |
 ---
  Data
-**Abundance (`Abundance.tif`):** Earthworm community abundance derived from the UBA BoBiKa project — a federally funded national-scale soil biodiversity survey across Germany whose outputs are embedded in German federal environmental policy (Salako et al. 2025, Umweltbundesamt Technical Report). Raw records are held under UBA data agreement and cannot be shared publicly. NA cells are removed using `na.omit()` prior to simulation — treating missing cells as unsampled rather than unoccupied, preserving the biological integrity of the abundance surface.
+**Abundance (`Abundance.tif`):** Earthworm community abundance derived from the UBA BoBiKa project — a federally funded national-scale soil biodiversity survey across Germany whose outputs are embedded in German federal environmental policy (Salako et al. 2025, Umweltbundesamt Technical Report). Raw records and raster layers are held under edaphobase-UBA data agreement and are available on request. NA cells are addressed prior to simulation — treating missing cells as unsampled rather than unoccupied, preserving the biological integrity of the abundance surface.
 **Climate rasters (`Temp_Curr.tif`, `Temp_2050.tif`, `Temp_2070.tif`):** CHELSA v2.1 bioclimatic layers under CMIP6 CNRM-CM6-1 SSP5-8.5, freely available at [chelsa-climate.org](https://chelsa-climate.org/).
 ---
 ## Repository Structure
