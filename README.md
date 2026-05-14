@@ -10,7 +10,7 @@
 | Climate dataset | CHELSA v2.1 |
 | GCM | CNRM-CM6-1 (CMIP6) |
 | Scenario | SSP5-8.5 |
-| Drivers | Mean Annual Temperature (MAT)) |
+| Drivers | Mean Annual Temperature (MAT) |
 | Time steps | Current · 2050 · 2070 |
 ---
  Data
