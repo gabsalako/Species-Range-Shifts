@@ -63,7 +63,7 @@ K_part2_stack <- rast(K_part2)
 K_dynamic <- c(K_part1_stack, K_part2_stack)
 names(K_dynamic) <- paste0("step_", 1:51)
 
-#addressing NA
+#address posssible NA issues 
 #1. Create a master mask by summing everything
 master_mask2 <- Abundance_agg + sum(K_dynamic)
 #2. Mask Abundance
@@ -77,16 +77,16 @@ KdynamicClim_<- mask(K_dynamic, master_mask2)
 sim_dataSF <- initialise(
   n1_map =Abundance_nl,#represents NLmap
   K_map =KdynamicClim_, # represents carrying capacity map of each climate scenarios
-  r = log(1.5),
+  r = log(1.5), #population growth rate
   rate =  1 / 0.0001 # or 1/10000 
 )
 
-#set the time steps at 3, current, 2050 and 20270
+#set the time steps to 51 from current (2020), 2050 to 2070
 sim_result_SF <- sim(obj = sim_dataSF, time = 51)
 #use to plot the mean abundance graph at each time step
 summary(sim_result_SF)
-#plot the the predicted shift raster  at 3 time step
-#t_1=current t_1=2050, t_1=2070
+#plot the the predicted shift raster  at 6 time steps
+#t_1=current t_30=2050, t_50=2070
 plot(sim_result_SF,
      time_points = c(1, 10, 20, 30, 40, 50),
      template = sim_dataSF$K_map
