@@ -1,45 +1,100 @@
-# Species Range Shifts of Earthworm Communities Under Climate Change
-**Mechanistic simulation using `rangr` | CHELSA CMIP6 CNRM-CM6-1 SSP5-8.5 | Empirical BoBiKa abundance data**
+# 🌍 Climate-Driven Range Shifts of Soil Fauna Under Projected Warming Scenarios
+
+> Modelling earthworm community abundance dynamics across the Upper Elbe floodplain, Germany, from 2020 to 2070 under high-emission climate forcing (CMIP6/SSP5-8.5).
 ---
-## This repository provides a reproducible R workflow for simulating **spatially explicit, mechanistic range shifts of earthworm community abundance** under future climate change along Elbe flood plain Germany, a subset of national map. Using the [`rangr`](https://cran.r-project.org/package=rangr) package, the simulation models dispersal, reproduction, and survival dynamics — going beyond correlative SDM envelope projection — driven by temperature change under **CHELSA CMIP6 CNRM-CM6-1 SSP5-8.5** across three time steps: **current · 2050 · 2070**. Community abundance is empirically parameterised from the **edaphobase-UBA BoBiKa** national-scale soil biodiversity mapping (FKZ 3719-71-206-0), Germany.
-**Key result:** Earthworm community abundance shows pronounced spatial contraction by 2050, approaching a policy-relevant threshold between 2050 and 2070 under the high-emission scenario — indicating that current German federal soil quality benchmarks require revision under future climate.
+## Overview
+This repository contains data, scripts, and outputs for a spatiotemporal species distribution modelling study investigating how projected climate warming reshapes the abundance and spatial distribution of **earthworm communities** in the **Upper Elbe floodplain region, Germany**.
+The study combines a **correlative** (Random Forest SDM) and **mechanistic** (rangr) modelling framework to simulate range dynamics at 10-year intervals from 2020 to 2070 at 1 km spatial resolution.
+### Key Findings
+- 🔼 **Poleward expansion** of high-abundance zones without evidence of southern population collapse
+- 🟡 **Southwestern climatic refugium** — persistent and intensifying high-abundance patches emerge in the southwest by t_40 (2060) and t_50 (2070)
+- 🔄 **Northeast-to-southwest redistribution** of the abundance core over the 50-year projection period, suggesting a complex spatial reorganisation rather than simple linear range shift
+
 ---
-## Climate Parameterisation
-| Parameter | Value |
-|---|---|
-| Climate dataset | CHELSA v2.1 |
-| GCM | CNRM-CM6-1 (CMIP6) |
-| Scenario | SSP5-8.5 |
-| Drivers | Mean Annual Temperature (MAT) |
-| Time steps | Current · 2050 · 2070 |
+
+## Study System
+
+| Parameter | Details |
+|-----------|---------|
+| **Taxa** | Earthworms (*Lumbricidae*) — ecological group community abundance |
+| **Region** | Upper Elbe floodplain, Germany (~51.3–52.3°N, 11.5–14.5°E) |
+| **Spatial Resolution** | 1 km² grid |
+| **Temporal Scope** | 2020–2070 (10-year intervals) |
+| **Climate Scenario** | CMIP6 / SSP5-8.5 (high-emission pathway) |
 ---
- Data
-**Abundance (`Abundance.tif`):** Earthworm community abundance derived from the UBA BoBiKa project — a federally funded national-scale soil biodiversity survey across Germany whose outputs are embedded in German federal environmental policy (Salako et al. 2025, Umweltbundesamt Technical Report). Raw records and raster layers are held under edaphobase-UBA data agreement and are available on request. NA cells are addressed prior to simulation — treating missing cells as unsampled rather than unoccupied, preserving the biological integrity of the abundance surface.
-**Climate rasters (`Temp_Curr.tif`, `Temp_2050.tif`, `Temp_2070.tif`):** CHELSA v2.1 bioclimatic layers under CMIP6 CNRM-CM6-1 SSP5-8.5, freely available at [chelsa-climate.org](https://chelsa-climate.org/).
+## Modelling Framework
+### Step 1 — Correlative SDM (Random Forest)
+A Random Forest model was trained on empirical earthworm abundance records and current climate/soil covariates to generate a **baseline abundance raster** (t_1, 2020).
+### Step 2 — Mechanistic Range Shift Simulation (rangr)
+The `rangr` package was used to simulate **spatially explicit population dynamics** and dispersal-driven range shifts forward through time, driven by CMIP6/SSP5-8.5 climate projections.
+This hybrid approach captures both the **habitat suitability response** (correlative) and **population spread and dispersal constraints** (mechanistic), providing a more realistic picture of range dynamics than either approach alone.
+
+---
+## Temporal Snapshots
+
+| Model Output | Year | Description |
+|-------------|------|-------------|
+| `t_1` | 2020 | Baseline — current abundance distribution |
+| `t_10` | 2030 | Near-term projection |
+| `t_20` | 2040 | Mid-century early |
+| `t_30` | 2050 | Mid-century |
+| `t_40` | 2060 | Late-century early — southwestern refugium emerging |
+| `t_50` | 2070 | Late-century — southwestern refugium consolidated |
 ---
 ## Repository Structure
 ```
-Species-Range-Shifts/
-├── RangeModel/
-│   ├── Data/          # Abundance and climate rasters
-│   ├── Rscripts/      # rangr simulation script
-│   └── Output/        # Range shift maps and abundance trajectory figures
-├── README.md
-└── CITATION.cff
+/
+├── data/
+│   ├── raw/              # Raw climate layers (CMIP6/SSP5-8.5), soil covariates
+│   ├── processed/        # Processed rasters, abundance records
+│   └── sdm_output/       # Baseline RF abundance raster (t_1)
+│
+├── scripts/
+│   ├── 01_rf_sdm.R       # Random Forest SDM — baseline abundance modelling
+│   ├── 02_rangr_sim.R    # rangr mechanistic range shift simulation
+│   ├── 03_visualise.R    # Spatial maps and latitudinal profile plots
+│   └── 04_analysis.R     # Summary statistics and abundance trend analysis
+│
+└── output/
+    └── figures/          # All generated figures (spatial maps, latitudinal profiles)
 ```
-## Quick Start
-
-```r
-install.packages(c("terra", "rangr", "here"))
-# Then open RangeModel/Rangemodel.Rproj and run Rscripts/rangr_simulation.R
-```
-## Key Results
-- **Current (t₁):** High community abundance in western and central study landscape — consistent with empirical BoBiKa distribution
-- **2050 (t₂):** Pronounced spatial contraction; western habitat core reduces markedly under SSP5-8.5 forcing
-- **2070 (t₃):** Near-absence across majority of landscape; mean abundance crosses policy-relevant threshold
-<summary><strong>Full scientific background, workflow, limitations & references — click to expand</strong></summar
 ---
-## Scientific Background
+## Dependencies
+All analyses were conducted in **R**. The following packages are required:
+```r
+install.packages(c("rangr", "terra", "here"))
+```
+| Package | Role |
+|---------|------|
+| [`rangr`](https://cran.r-project.org/package=rangr) | Mechanistic range shift simulation |
+| [`terra`](https://cran.r-project.org/package=terra) | Spatial raster processing and analysis |
+| [`here`](https://cran.r-project.org/package=here) | Reproducible file path management |
+---
+## Output Summary
+The key model output is a series of **1 km resolution abundance rasters** (ind/m²) alongside a **latitudinal abundance profile** comparing baseline (T1) and future (T2) distributions.
+![Model Output](output/figures/range_shift_summary.png)
+*Six-panel spatial abundance maps (t_1 to t_50) with latitudinal abundance profiles comparing baseline (2020) and projected future (2070) earthworm community abundance across the Upper Elbe floodplain.*
+---
+## Ecological Interpretation
+The model outputs reveal a **spatially complex redistribution** of earthworm abundance rather than a simple poleward retreat:
+
+1. **No southern collapse** — contrary to classic range contraction predictions under warming, southern populations do not disappear over the projection period
+2. **Southwestern refugium** — by 2060–2070, high-abundance zones (>350 ind/m²) consolidate strongly in the southwest, likely reflecting locally buffered microclimatic or edaphic conditions
+3. **Latitudinal profile shift** — the abundance peak moves northward (~52.0–52.2°N), consistent with warming-driven poleward expansion, but the southwest gains indicate a **diagonal rather than purely latitudinal** range shift trajectory
+
+---
+## Citation
+If you use this code or data, please cite:
+> **Salako, G.** (2025). *Climate-driven range shifts of soil fauna under projected warming scenarios*. Senckenberg Museum of Natural History Görlitz, Germany. GitHub Repository.
+---
+## Author
+
+**Gabriel Salako, PhD**
+Senckenberg Museum of Natural History Görlitz
+Görlitz, Germany
+---
+## License
+This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
 Earthworms mediate approximately 80% of soil organic matter decomposition and are primary indicators of soil ecosystem health. Their distributions are highly sensitive to temperature and precipitation — yet mechanistic projections of how earthworm community abundance will shift under future climate change remain scarce.
 Existing models largely rely on correlative SDMs, which project habitat suitability envelopes but do not explicitly model dispersal, demography, or population dynamics. This repository addresses that gap using the `rangr` package, which implements spatially explicit population simulation — modelling the process of range shift rather than just the destination.
 The simulation is directly connected to published national-scale earthworm distribution models from the BoBiKa and BONARES programmes (Salako et al. 2023, 2024), ensuring empirically grounded parameterisation.
