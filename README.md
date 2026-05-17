@@ -100,14 +100,14 @@ Existing models largely rely on correlative SDMs, which project habitat suitabil
 The simulation is directly connected to published national-scale earthworm distribution models from the BoBiKa and BONARES programmes (Salako et al. 2023, 2024), ensuring empirically grounded parameterisation.
 
 **Scientific question:** How will earthworm community abundance shift spatially under SSP5-8.5, accounting for dispersal limitation and population dynamics — and at what point does mean abundance approach critical policy-relevant thresholds?
-**Variable selection rationale:** MAT and PPT were selected as primary carrying capacity drivers based on variable importance analysis from the BoBiKa ensemble SDM (Salako et al. 2023), where soil variables (tecture), avg. temperature (Bio_1) and annual precipitation (Bio_12) were confirmed as major predictors. These results are consistent with global-scale variable importance analysis from the revised global earthworm occurrence database (Salako et al. in prep.).
+**Variable selection rationale:** MAT was selected as primary carrying capacity drivers based on variable importance analysis from the BoBiKa ensemble SDM (Salako et al. 2023), where soil variables (tecture), avg. temperature (Bio_1) and annual precipitation (Bio_12) were confirmed as major predictors. These results are consistent with global-scale variable importance analysis from the revised global earthworm occurrence database (Salako et al. in prep.).
 
 ---
 ## Full Workflow
 
 **Step 1 — Load raster data** using `terra::rast()`: empirical abundance raster and three temperature rasters.
 **Step 2 — Prepare and combine climate layers** into a multi-layer temporal raster stack.
-**Step 3 — Handle missing values.** NA cells are removed using prior to model initialisation. Only cells with verified abundance records contribute to the simulation. Raster extents and CRS are aligned across all input layers.
+**Step 3 — Handle missing values.** NA cells are removed prior to model initialisation. Only cells with verified abundance records contribute to the simulation. Raster extents and CRS are aligned across all input layers.
 **Step 4 — Aggregate raster resolution** using `terra::aggregate()` for computational efficiency. This is optional
 **Step 5 — Initialise rangr model** using `initialise()`: initial abundance from BoBiKa raster; carrying capacity linked to temperature; dispersal kernel parameterised from earthworm dispersal literature.
 **Step 6 — Simulate range shifts** using `sim()` across 2050 and 2070 climate layers, propagating dispersal, reproduction, and survival dynamics.
