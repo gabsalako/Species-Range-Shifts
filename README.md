@@ -145,4 +145,4 @@ A `CITATION.cff` file is included for reference managers and GitHub's built-in c
 
 ---
 
-*License: [MIT](LICENSE) · Abundance data subject to UBA data agreement — not redistributed here.*
+*License: [MIT](LICENSE) · Abundance data subject to Edaphobase-UBA data agreement are available on request.*
