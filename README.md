@@ -5,6 +5,11 @@
 ## Overview
 This repository contains data, scripts, and outputs for a spatiotemporal species distribution modelling study investigating how projected climate warming reshapes the abundance and spatial distribution of **earthworm communities** in the **Upper Elbe floodplain region, Germany**.
 The study combines a **correlative** (Random Forest SDM) and **mechanistic** (rangr) modelling framework to simulate range dynamics at 10-year intervals from 2020 to 2070 at 1 km spatial resolution.
+## Scientific Background
+Earthworms mediate approximately 80% of soil organic matter decomposition and are primary indicators of soil ecosystem health. Their spatial distributions are highly sensitive to temperature and precipitation — yet despite this ecological importance, mechanistic projections of how earthworm community abundance will shift under future climate change remain scarce.
+Existing global and national biodiversity models are largely built on correlative species distribution models (SDMs), which project habitat suitability envelopes under future climate but do not explicitly model the demographic and dispersal processes that govern whether and how fast communities can actually track shifting conditions. This repository addresses that gap.
+This workflow implements a spatially explicit, mechanistic simulation of earthworm community abundance dynamics using the rangr R package — going beyond static envelope projection to model the population-level processes of dispersal, reproduction, and survival under changing climate conditions across three time steps: current, 2050, and 2070.
+The simulation is directly connected to, and extends, published national-scale earthworm distribution models from the UBA BoBiKa research programme (Salako et al. 2023, 2024), ensuring that the mechanistic parameterisation is empirically grounded rather than hypothetical.
 ### Key Findings
 - 🔼 **Poleward expansion** of high-abundance zones without evidence of southern population collapse
 - 🟡 **Southwestern climatic refugium** — persistent and intensifying high-abundance patches emerge in the southwest by t_40 (2060) and t_50 (2070)
